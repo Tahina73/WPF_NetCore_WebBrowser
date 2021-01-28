@@ -5,8 +5,41 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WebBrowser"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Tahina Web Browser" Height="450" Width="800" MinWidth="800" MinHeight="450" WindowStyle="None" WindowState="Maximized" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
     <Grid>
-
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="45"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <!--#region Menu-->
+        <DockPanel Grid.Row="0" VerticalAlignment="Top" Height="25">
+            <Menu Height="25" DockPanel.Dock="Top" Width="auto" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                <MenuItem x:Name="miFile" Header="_File" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch" Height="25">
+                    <MenuItem x:Name="miNew" Header="_New"/>
+                    <MenuItem x:Name="miOpen" Header="_Open"/>
+                    <MenuItem x:Name="miSave" Header="_Save"/>
+                    <MenuItem x:Name="miExit" Header="_Exit" Click="miExit_Click"/>
+                </MenuItem>
+                <MenuItem x:Name="miNav" Header="_Navigate" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch" Height="25">
+                    <MenuItem x:Name="miBack" Header="_Back" Click="miBack_Click"/>
+                    <MenuItem x:Name="miForward" Header="_Forward" Click="miForward_Click"/>
+                </MenuItem>
+                <MenuItem x:Name="miHelp" Header="_?" Height="25"/>
+            </Menu>
+        </DockPanel>
+        <!--#endregion-->        
+        <!--#region Browser bar-->
+        <DockPanel Grid.Row="1" VerticalAlignment="Top" Height="45">
+            <Button x:Name="btGo" Content="Search" DockPanel.Dock="Right" HorizontalAlignment="Stretch" Margin="1,5,20,5" HorizontalContentAlignment="Center" FontFamily="Good Times" FontSize="18" Width="200" MinWidth="200" MaxWidth="200" Click="btGo_Click" />
+            <TextBox x:Name="tbUrl" Text="http://"  TextWrapping="Wrap" Margin="30,10,30,10" VerticalContentAlignment="Center" HorizontalAlignment="Stretch" Padding="10,0,0,0"/>
+        </DockPanel>
+        <!--#endregion-->
+        <!--#region Browser-->
+        <DockPanel Grid.Row="2" VerticalAlignment="Top">
+            <Label x:Name="lbFooter" Content="Copyright 2021 - Tahina" Height="25" DockPanel.Dock="Bottom" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" Margin="0,0,0,0" Padding="5,5,20,5"/>
+            <WebBrowser x:Name="wbMain" Source="https://www.google.com" />
+        </DockPanel>
+        <!--#endregion-->
     </Grid>
 </Window>
